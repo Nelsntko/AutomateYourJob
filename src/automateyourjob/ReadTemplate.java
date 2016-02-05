@@ -15,23 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package automateyourjob;
-import java.awt.EventQueue;
+
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+
 /**
  *
  * @author ntko
  */
-public class AutomateYourJob {
-
-    public static void main(String[] args) {
-
-        EmploymentDetails e = new EmploymentDetails();
-        try {
-            e.EmploymentDetails("Susan", "HR", "12/12/2012", "01/01/2015", "Delivery Driver", null, true);
-        } catch (IOException ex) {
-            Logger.getLogger(AutomateYourJob.class.getName()).log(Level.SEVERE, null, ex);
-        }
+public class ReadTemplate {
+        
+    static String readTemplate(String path, Charset encoding) 
+        throws IOException 
+    {
+        byte[] encoded = Files.readAllBytes(Paths.get(path));
+        return new String(encoded, encoding);
     }
 }

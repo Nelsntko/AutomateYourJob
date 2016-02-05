@@ -1,0 +1,5 @@
+[REF] ([TITLE]) has advised that the Candidate was employed from [DATESTART] to [DATEEND] in the position of [POSITION] with a salary of [SALARY]
+
+[INFO]
+
+No further information was provided.
