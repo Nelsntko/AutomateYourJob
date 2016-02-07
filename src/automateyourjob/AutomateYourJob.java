@@ -15,6 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package automateyourjob;
+import java.awt.AWTException;
 import java.io.IOException;
 /**
  *
@@ -22,11 +23,14 @@ import java.io.IOException;
  */
 public class AutomateYourJob {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AWTException {
         try {
         EmploymentRef e = new EmploymentRef();
-        e.EmploymentRef("D&G", "Susan", null, "01/01/2001", "02/02/2002",
+        String reference = e.EmploymentRef("D&G", "Susan", null, "01/01/2001", "02/02/2002",
                 null, "22,500", true);
+        
+        Keyboard keyboard = new Keyboard();
+        keyboard.type(reference);
         }
         catch (IOException ex){
             System.out.println (ex.toString());

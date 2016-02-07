@@ -27,10 +27,10 @@ import com.google.common.io.Resources;
 public class EmploymentRef {
     // This should take the input from the GUI, merge it with the ReadTemplate
     // and paste it where it belongs.
-    public void EmploymentRef(String company, String ref, String title, String dateStart,
+    public String EmploymentRef(String company, String ref, String title, String dateStart,
             String dateEnd, String position, String salary, boolean info) throws IOException {
         
-        URL url = Resources.getResource("employment.txt");
+        URL url = Resources.getResource("\\automateyourjob\\templates\\employment.template");
         String content = Resources.toString(url, Charsets.UTF_8);
         
         //check for nulls so the write-up still works if there is no data for a variable.
@@ -78,7 +78,7 @@ public class EmploymentRef {
         else { // delete info and two new lines.
             content = content.replaceAll("<info>" + "\r\n" + "\r\n", "");
         }
-        System.out.print(content);
+        return content;
         
     }
 }
