@@ -15,23 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package automateyourjob;
-import java.awt.EventQueue;
+import java.awt.AWTException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author ntko
  */
 public class AutomateYourJob {
 
-    public static void main(String[] args) {
-
-        EmploymentDetails e = new EmploymentDetails();
+    public static void main(String[] args) throws AWTException {
         try {
-            e.EmploymentDetails("Susan", "HR", "12/12/2012", "01/01/2015", "Delivery Driver", null, true);
-        } catch (IOException ex) {
-            Logger.getLogger(AutomateYourJob.class.getName()).log(Level.SEVERE, null, ex);
+        EmploymentRef e = new EmploymentRef();
+        String reference = e.EmploymentRef("D&G", "Susan", null, "01/01/2001", "02/02/2002",
+                null, "22,500", true);
+        
+        Keyboard keyboard = new Keyboard();
+        keyboard.type(reference);
+        }
+        catch (IOException ex){
+            System.out.println (ex.toString());
         }
     }
 }
