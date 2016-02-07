@@ -16,54 +16,58 @@
  */
 package automateyourjob;
 
+import com.google.common.base.Charsets;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
+import java.net.URL;
+import com.google.common.io.Resources;
 /**
  *
  * @author ntko
  */
-public class EmploymentDetails {
+public class EmploymentRef {
     // This should take the input from the GUI, merge it with the ReadTemplate
     // and paste it where it belongs.
-    public void EmploymentDetails(String ref, String title, String dateStart,
-            String dateEnd, String position, String salary, boolean info) throws IOException{
+    public void EmploymentRef(String company, String ref, String title, String dateStart,
+            String dateEnd, String position, String salary, boolean info) throws IOException {
         
-        Path path = Paths.get("employment.txt");
-
-        Charset charset = StandardCharsets.UTF_8;
-
-        String content = new String(Files.readAllBytes(path), charset);
+        URL url = Resources.getResource("employment.txt");
+        String content = Resources.toString(url, Charsets.UTF_8);
         
-        //copy original to write back to file.
-        String original = new String(Files.readAllBytes(path), charset); 
-
         //check for nulls so the write-up still works if there is no data for a variable.
         if (position == null && salary == null){
-            content = content.replaceAll(" in the position of [POSITION] with"
-                    + " a salary of [SALARY]", ".");            
+            content = content.replaceAll(" in the position of <position> with"
+                    + " a salary of <salary>", ".");            
         }        
         else if (salary == null){
-            content = content.replaceAll(" with a salary of [SALARY]", ".");
+            content = content.replaceAll(" with a salary of <salary>", ".");
         } 
         else if (position == null){
-            content = content.replaceAll("in the position of [POSITION]", ".");            
+            content = content.replaceAll(" in the position of <position>", "");            
         }
 
-        content = content.replaceAll("[REF]", ref);
-        content = content.replaceAll("[TITLE]", title);
-        content = content.replaceAll("[DATESTART]", dateStart);
-        content = content.replaceAll("[DATEEND]", dateEnd);
-        content = content.replaceAll("[POSITION]", position);
-        content = content.replaceAll("[SALARY]", salary);
+        content = content.replaceAll("<position>", position);
+        content = content.replaceAll("<salary>", salary);        
+
+        if (title == null){
+            content = content.replaceAll("<title>", "").replaceAll(" \\(", "")
+                    .replaceAll("\\)", "");
+        }
+        else {
+            content = content.replaceAll("<title>", title);
+        }
+        if (ref == null){
+            content = content.replaceAll("<ref>", company);
+        }
+        else {
+            content = content.replaceAll("<ref>", ref);
+        }
+
+
+        content = content.replaceAll("<date start>", dateStart);
+        content = content.replaceAll("<date end>", dateEnd);
         
         if (info){
-            content = content.replaceAll("[INFO]", "The referee described the "
+            content = content.replaceAll("<info>", "The referee described the "
                     + "Candidate as " + "\r\n" + "\r\n" + "They further advised"
                     + " that the Candidate was honest and showed integrity, and"
                     + " the Candidate's health and disciplinary record were "
@@ -71,7 +75,10 @@ public class EmploymentDetails {
                     + "stated was XXX and the Company would re-employ the "
                     + "Candidate.");            
         }
+        else { // delete info and two new lines.
+            content = content.replaceAll("<info>" + "\r\n" + "\r\n", "");
+        }
         System.out.print(content);
-        Files.write(path, content.getBytes(charset));
+        
     }
 }

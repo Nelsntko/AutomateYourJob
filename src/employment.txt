@@ -1,5 +1,5 @@
-[REF] ([TITLE]) has advised that the Candidate was employed from [DATESTART] to [DATEEND] in the position of [POSITION] with a salary of [SALARY]
+<ref> (<title>) has advised that the Candidate was employed from <date start> to <date end> in the position of <position> with a salary of <salary>.
 
-[INFO]
+<info>
 
 No further information was provided.
