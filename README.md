@@ -7,4 +7,4 @@ I intend to make this program modular and easy to edit the templates for the end
 
 The templates should be modifiable by a UI so the user can modify how each reference reads.
 
-This is necessary so it can be written in different languages etc.
+This is necessary so it can be written in different (natural) languages etc.
