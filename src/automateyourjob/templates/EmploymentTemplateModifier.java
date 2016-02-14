@@ -16,11 +16,18 @@
  */
 package automateyourjob.templates;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author ntko
  */
 public class EmploymentTemplateModifier extends javax.swing.JFrame {
+
 
     /**
      * Creates new form EmploymentReference
@@ -41,19 +48,18 @@ public class EmploymentTemplateModifier extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jReferee = new javax.swing.JTextField();
         jTitle = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jMainText = new javax.swing.JTextField();
         jDate1 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        jTo = new javax.swing.JTextField();
         jDate2 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        jPositionText = new javax.swing.JTextField();
         jPosition = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        jSalaryText = new javax.swing.JTextField();
         jSalary = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jInfoText = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -78,45 +84,58 @@ public class EmploymentTemplateModifier extends javax.swing.JFrame {
             }
         });
 
-        jTextField2.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        jTextField2.setText("has advised that the Candidate was employed from");
+        jMainText.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jMainText.setText("has advised that the Candidate was employed from");
 
         jDate1.setEditable(false);
         jDate1.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jDate1.setText("<Date 1>");
 
-        jTextField5.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        jTextField5.setText("to");
+        jTo.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jTo.setText("to");
 
         jDate2.setEditable(false);
         jDate2.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jDate2.setText("<Date 2>");
 
-        jTextField6.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        jTextField6.setText("in the position of");
+        jPositionText.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jPositionText.setText("in the position of");
 
         jPosition.setEditable(false);
         jPosition.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jPosition.setText("<Position>");
 
-        jTextField7.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        jTextField7.setText("with a salary of");
+        jSalaryText.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jSalaryText.setText("with a salary of");
 
         jSalary.setEditable(false);
         jSalary.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jSalary.setText("<Salary>");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("The Refere described the Candidate  as\n\nThey further advised that the Candidate was honest and showed integrity, and the Candidate's health and disciplinary record were clean.\n\nThe reason for leaving stated was XXX and the Company would re-employ the Candidate.");
-        jScrollPane1.setViewportView(jTextArea1);
+        jInfoText.setColumns(20);
+        jInfoText.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jInfoText.setRows(5);
+        jInfoText.setText("The Referee described the Candidate  as\n\nThey further advised that the Candidate was honest and showed integrity, and the Candidate's health and disciplinary record were clean.\n\nThe reason for leaving stated was XXX and the Company would re-employ the Candidate.|");
+        jInfoText.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                jInfoTextComponentAdded(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jInfoText);
 
         jLabel2.setText("These fields will not appear if the data hasn't been entered");
 
         jButton1.setText("Save");
-
-        jButton2.setText("Revert");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("File");
 
@@ -151,27 +170,25 @@ public class EmploymentTemplateModifier extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jMainText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPositionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSalaryText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -185,21 +202,19 @@ public class EmploymentTemplateModifier extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jReferee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jMainText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPositionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSalaryText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(14, 14, 14))
+                .addGap(9, 9, 9)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         pack();
@@ -208,6 +223,40 @@ public class EmploymentTemplateModifier extends javax.swing.JFrame {
     private void jTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTitleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTitleActionPerformed
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        try {
+            String[] employment;
+            employment = new String[5];
+            employment[0] = jMainText.getText();
+            employment[1] = jTo.getText();
+            employment[2] = jPositionText.getText();
+            employment[3] = jSalaryText.getText();
+            employment[4] = jInfoText.getText();
+            int nbrEmployment = employment.length;
+            
+            BufferedWriter writer = null;
+            writer = new BufferedWriter(new FileWriter("src\\automateyourjob\\templates\\employment.template"));
+            for(int i = 0; i < nbrEmployment; i++)
+            {
+                writer.write(employment[i]);
+                writer.append('|');
+            }
+            writer.flush();
+            writer.close();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(EmploymentTemplateModifier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jInfoTextComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jInfoTextComponentAdded
+
+    }//GEN-LAST:event_jInfoTextComponentAdded
 
     /**
      * @param args the command line arguments
@@ -247,25 +296,24 @@ public class EmploymentTemplateModifier extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JTextField jDate1;
     private javax.swing.JTextField jDate2;
+    private javax.swing.JTextArea jInfoText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jMainText;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JTextField jPosition;
+    private javax.swing.JTextField jPositionText;
     private javax.swing.JTextField jReferee;
     private javax.swing.JTextField jSalary;
+    private javax.swing.JTextField jSalaryText;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTitle;
+    private javax.swing.JTextField jTo;
     // End of variables declaration//GEN-END:variables
 }
