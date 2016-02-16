@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package automateyourjob;
-import automateyourjob.templates.Framework;
+import automateyourjob.templates.AutomateYourJobUI;
 import java.awt.AWTException;
 /**
  *
@@ -24,7 +24,8 @@ import java.awt.AWTException;
 public class AutomateYourJob {
 
     public static void main(String[] args) throws AWTException {
-        Framework framework = new Framework();
-        framework.setVisible(true);
+        java.awt.EventQueue.invokeLater(() -> {
+            new AutomateYourJobUI().setVisible(true);
+        });
     }
 }
