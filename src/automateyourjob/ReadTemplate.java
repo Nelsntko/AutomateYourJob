@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package automateyourjob.templates;
+package automateyourjob;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
@@ -31,15 +31,12 @@ import java.util.Arrays;
  */
 public class ReadTemplate {
 
-    public ReadTemplate(String srcautomateyourjobtemplatesemploymenttemp) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void Reader(String fileName) throws IOException {
+    public ArrayList<String> ReadTemplate(String fileName) throws IOException {
 
             URL url = Resources.getResource(fileName);
             String text = Resources.toString(url, Charsets.UTF_8);
-            ArrayList<String> textArray = new ArrayList<>(Arrays.asList(text.split("|")));
-            System.out.print(textArray);
+            ArrayList<String> textArray = new ArrayList<>(Arrays.asList(text.split("¦")));
+            return textArray;
         }
-    }
+}
+    
