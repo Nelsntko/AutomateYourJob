@@ -68,17 +68,12 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Edit Template"/>
           </Properties>
-          <Events>
-            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu2MouseReleased"/>
-          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Employment"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuItem2MouseClicked"/>
-                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuItem2MouseReleased"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
               </Events>
             </MenuItem>
@@ -191,10 +186,12 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jSaveButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLoadButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jDefaultButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="22" max="32767" attributes="0"/>
+                      <EmptySpace pref="46" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -225,8 +222,9 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jSaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jDefaultButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLoadButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="12" max="32767" attributes="0"/>
+                      <EmptySpace pref="67" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -269,12 +267,9 @@
                   <Font name="Dialog" size="10" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="userSetText.get(0)" type="code"/>
+                  <Connection code="fileRead().get(0)" type="code"/>
                 </Property>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="ArrayList&lt;String&gt; userSetText = null;&#xa;        try {&#xa;            ReadTemplate r = new ReadTemplate();&#xa;            String fileName = &quot;automateyourjob\\templates\\employment.template&quot;;&#xa;&#xa;            userSetText = r.ReadTemplate(fileName);&#xa;        }catch (IOException ex) {&#xa;            Logger.getLogger(AutomateYourJob.class.getName()).log(Level.SEVERE, null, ex);&#xa;        }"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="jDate1">
               <Properties>
@@ -291,7 +286,7 @@
                   <Font name="Dialog" size="10" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="userSetText.get(1)" type="code"/>
+                  <Connection code="fileRead().get(1)" type="code"/>
                 </Property>
               </Properties>
             </Component>
@@ -310,7 +305,7 @@
                   <Font name="Dialog" size="10" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="userSetText.get(2)" type="code"/>
+                  <Connection code="fileRead().get(2)" type="code"/>
                 </Property>
               </Properties>
             </Component>
@@ -329,7 +324,7 @@
                   <Font name="Dialog" size="10" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="userSetText.get(3)" type="code"/>
+                  <Connection code="fileRead().get(3)" type="code"/>
                 </Property>
               </Properties>
             </Component>
@@ -359,7 +354,7 @@
                     </Property>
                     <Property name="rows" type="int" value="5"/>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="userSetText.get(4)" type="code"/>
+                      <Connection code="fileRead().get(4)" type="code"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -373,7 +368,6 @@
                 <Property name="text" type="java.lang.String" value="Save"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jSaveButtonMouseReleased"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jSaveButtonActionPerformed"/>
               </Events>
             </Component>
@@ -382,8 +376,15 @@
                 <Property name="text" type="java.lang.String" value="Default"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jDefaultButtonMouseReleased"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jDefaultButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jLoadButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Load"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jLoadButtonActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

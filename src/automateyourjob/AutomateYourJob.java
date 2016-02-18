@@ -15,7 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package automateyourjob;
-import automateyourjob.templates.AutomateYourJobUI;
 import java.awt.AWTException;
 /**
  *
