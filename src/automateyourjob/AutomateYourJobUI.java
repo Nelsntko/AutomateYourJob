@@ -493,7 +493,7 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
             int nbrEmployment = employment.length;
 
             BufferedWriter writer = null;
-            writer = new BufferedWriter(new FileWriter("src\\automateyourjob\\templates\\employment.template"));
+            writer = new BufferedWriter(new FileWriter("src\\automateyourjob\\employment.template"));
             for(int i = 0; i < nbrEmployment; i++)
             {
                 writer.write(employment[i]);
@@ -547,7 +547,26 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuEducationEditActionPerformed
 
     private void jEducationSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEducationSaveButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            String[] education;
+            education = new String[3];
+            education[0] = jEducationMainText.getText();
+            education[1] = jEducationTo.getText();
+            education[2] = jEducationAwarded.getText();
+            int nbrEmployment = education.length;
+
+            BufferedWriter writer = null;
+            writer = new BufferedWriter(new FileWriter("src\\automateyourjob\\education.template"));
+            for(int i = 0; i < nbrEmployment; i++)
+            {
+                writer.write(education[i]);
+                writer.append('¦');
+            }
+            writer.flush();
+            writer.close();
+        } catch (IOException ex) {
+            Logger.getLogger(AutomateYourJobUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jEducationSaveButtonActionPerformed
 
     private void jEducationLoadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEducationLoadButtonActionPerformed
