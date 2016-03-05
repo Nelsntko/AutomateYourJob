@@ -30,10 +30,10 @@ public class EmploymentRef {
     public String EmploymentRef(String company, String ref, String title, String dateStart,
             String dateEnd, String position, String salary, boolean info) throws IOException {
         
-        URL url = Resources.getResource("\\automateyourjob\\templates\\employment.template");
+        URL url = Resources.getResource("src\\automateyourjob\\employment.template");
         String content = Resources.toString(url, Charsets.UTF_8);
         
-        //check for nulls so the write-up still works if there is no data for a variable.
+        //check for nulls so the write-up still makes sense if there is no data for a variable.
         if (position == null && salary == null){
             content = content.replaceAll(" in the position of <position> with"
                     + " a salary of <salary>", ".");            

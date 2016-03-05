@@ -148,7 +148,7 @@ public class Keyboard {
         case '?': doType(VK_SHIFT, VK_SLASH); break;
         case ' ': doType(VK_SPACE); break;
         default:
-            break;
+            break; //Deletes some special characters.
         }
     }
 
