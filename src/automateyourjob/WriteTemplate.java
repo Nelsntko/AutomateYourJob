@@ -17,6 +17,7 @@
 package automateyourjob;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.text.JTextComponent;
@@ -27,19 +28,20 @@ import javax.swing.text.JTextComponent;
  */
 public class WriteTemplate {
     
-    public WriteTemplate(String fileURL, JTextComponent... components) throws IOException{
-
+    public WriteTemplate(String fileName, JTextComponent... components) throws IOException{
+        File f = new File(System.getenv("APPDATA") +"/AYJ/" + fileName);
+        
         String[] textFieldContent = new String[components.length];
         
         for (int i = 0; i < components.length; ++i){
             textFieldContent[i] = components[i].getText();
         }
             BufferedWriter writer = null;
-            writer = new BufferedWriter(new FileWriter(fileURL));
+            writer = new BufferedWriter(new FileWriter(f.getAbsolutePath()));
             for(int i = 0; i < components.length; i++)
             {
                 writer.write(textFieldContent[i]);
-                writer.append('¦');
+                writer.append('`');
             }
             writer.flush();
             writer.close();
