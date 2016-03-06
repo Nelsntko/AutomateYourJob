@@ -17,8 +17,6 @@
 package automateyourjob;
 
 import java.awt.CardLayout;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -48,7 +46,7 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
         ArrayList<String> fileRead = null;
         try {
             ReadTemplate r = new ReadTemplate();
-            String fileName = "automateyourjob\\employment.template";
+            String fileName = "employment.template";
 
             fileRead = r.ReadTemplate(fileName);
         }catch (IOException ex) {
@@ -61,7 +59,7 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
         ArrayList<String> fileRead = null;
         try {
             ReadTemplate r = new ReadTemplate();
-            String fileName = "automateyourjob\\education.template";
+            String fileName = "education.template";
 
             fileRead = r.ReadTemplate(fileName);
         }catch (IOException ex) {
@@ -107,13 +105,21 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
         jEducationSaveButton = new javax.swing.JButton();
         jEducationLoadButton = new javax.swing.JButton();
         jEducationDefaultButton = new javax.swing.JButton();
+        awaitingPublishing = new javax.swing.JPanel();
+        jEducationPublish = new javax.swing.JButton();
+        jEmploymentPublish = new javax.swing.JButton();
+        jProfQualPublish = new javax.swing.JButton();
+        jMembership = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jEmploymentShort = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jFile = new javax.swing.JMenu();
         jMenuHome = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jAwaitingPublishing = new javax.swing.JMenuItem();
+        jCandidateComms = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jEditTemplate = new javax.swing.JMenu();
         jMenuEmploymentEdit = new javax.swing.JMenuItem();
         jMenuEducationEdit = new javax.swing.JMenuItem();
 
@@ -135,22 +141,24 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
             }
         });
 
+        mainPanel.setPreferredSize(new java.awt.Dimension(770, 259));
         mainPanel.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
         homePanel.setLayout(homePanelLayout);
         homePanelLayout.setHorizontalGroup(
             homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 736, Short.MAX_VALUE)
+            .addGap(0, 770, Short.MAX_VALUE)
         );
         homePanelLayout.setVerticalGroup(
             homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 237, Short.MAX_VALUE)
+            .addGap(0, 259, Short.MAX_VALUE)
         );
 
         mainPanel.add(homePanel, "homePanel");
 
         employmentEdit.setInheritsPopupMenu(true);
+        employmentEdit.setPreferredSize(new java.awt.Dimension(770, 259));
 
         jEmploymentLabel1.setText("Separate parts are modifiable");
 
@@ -225,44 +233,39 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
             .addGroup(employmentEditLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(employmentEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(employmentEditLayout.createSequentialGroup()
-                        .addComponent(jEmploymentScrollPane)
-                        .addContainerGap())
+                    .addComponent(jEmploymentScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employmentEditLayout.createSequentialGroup()
+                        .addComponent(jEmploymentLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jEmploymentLabel2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employmentEditLayout.createSequentialGroup()
+                        .addComponent(jEmploymentReferee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jEmploymentTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jEmploymentMainText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jEmploymentDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jEmploymentTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jEmploymentDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jEmploymentPositionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jEmploymentPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jEmploymentSalaryText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jEmploymentSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employmentEditLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jEmploymentSaveButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jEmploymentLoadButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jEmploymentDefaultButton)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employmentEditLayout.createSequentialGroup()
-                        .addGroup(employmentEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(employmentEditLayout.createSequentialGroup()
-                                .addComponent(jEmploymentLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jEmploymentLabel2))
-                            .addGroup(employmentEditLayout.createSequentialGroup()
-                                .addComponent(jEmploymentReferee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jEmploymentTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jEmploymentMainText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jEmploymentDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jEmploymentTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jEmploymentDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jEmploymentPositionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jEmploymentPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jEmploymentSalaryText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jEmploymentSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(105, Short.MAX_VALUE))))
+                        .addComponent(jEmploymentDefaultButton)))
+                .addContainerGap())
         );
         employmentEditLayout.setVerticalGroup(
             employmentEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,8 +287,8 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
                     .addComponent(jEmploymentSalaryText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jEmploymentSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jEmploymentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jEmploymentScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(employmentEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jEmploymentDefaultButton)
                     .addComponent(jEmploymentLoadButton)
@@ -360,7 +363,7 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jEducationDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jEducationAwarded, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE))
+                        .addComponent(jEducationAwarded, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))
                     .addGroup(educationEditLayout.createSequentialGroup()
                         .addComponent(jEducationLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -387,7 +390,7 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
                     .addComponent(jEducationDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jEducationTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jEducationAwarded, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
                 .addGroup(educationEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jEducationDefaultButton)
                     .addComponent(jEducationLoadButton)
@@ -397,13 +400,74 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
 
         mainPanel.add(educationEdit, "educationEdit");
 
+        jEducationPublish.setText("Education");
+
+        jEmploymentPublish.setText("Employment");
+        jEmploymentPublish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEmploymentPublishActionPerformed(evt);
+            }
+        });
+
+        jProfQualPublish.setText("Prof Qual");
+
+        jMembership.setText("Membership");
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel1.setText("Reference OK:");
+
+        jEmploymentShort.setText("Employment");
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel2.setText("Short Reference:");
+
+        javax.swing.GroupLayout awaitingPublishingLayout = new javax.swing.GroupLayout(awaitingPublishing);
+        awaitingPublishing.setLayout(awaitingPublishingLayout);
+        awaitingPublishingLayout.setHorizontalGroup(
+            awaitingPublishingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(awaitingPublishingLayout.createSequentialGroup()
+                .addGroup(awaitingPublishingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(awaitingPublishingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jEducationPublish, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jMembership, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jProfQualPublish, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jEmploymentPublish)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(awaitingPublishingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jEmploymentShort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                .addGap(0, 88, Short.MAX_VALUE))
+        );
+        awaitingPublishingLayout.setVerticalGroup(
+            awaitingPublishingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, awaitingPublishingLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(awaitingPublishingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(awaitingPublishingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jEmploymentShort)
+                    .addComponent(jEmploymentPublish))
+                .addGap(5, 5, 5)
+                .addComponent(jEducationPublish)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jProfQualPublish)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jMembership)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        mainPanel.add(awaitingPublishing, "awaitingPublishing");
+
         jMenuBar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jMenuBar1MouseReleased(evt);
             }
         });
 
-        jMenu1.setText("File");
+        jFile.setText("File");
 
         jMenuHome.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.ALT_MASK));
         jMenuHome.setText("Home");
@@ -412,23 +476,28 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
                 jMenuHomeActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuHome);
+        jFile.add(jMenuHome);
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem3.setText("Awaiting Publishing");
-        jMenu1.add(jMenuItem3);
+        jAwaitingPublishing.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
+        jAwaitingPublishing.setText("Awaiting Publishing");
+        jAwaitingPublishing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAwaitingPublishingActionPerformed(evt);
+            }
+        });
+        jFile.add(jAwaitingPublishing);
 
-        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem4.setText("Candidate Comms");
-        jMenu1.add(jMenuItem4);
+        jCandidateComms.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        jCandidateComms.setText("Candidate Comms");
+        jFile.add(jCandidateComms);
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem5.setText("Other");
-        jMenu1.add(jMenuItem5);
+        jFile.add(jMenuItem5);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jFile);
 
-        jMenu2.setText("Edit Template");
+        jEditTemplate.setText("Edit Template");
 
         jMenuEmploymentEdit.setText("Employment");
         jMenuEmploymentEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -436,7 +505,7 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
                 jMenuEmploymentEditActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuEmploymentEdit);
+        jEditTemplate.add(jMenuEmploymentEdit);
 
         jMenuEducationEdit.setText("Education");
         jMenuEducationEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -444,9 +513,9 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
                 jMenuEducationEditActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuEducationEdit);
+        jEditTemplate.add(jMenuEducationEdit);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jEditTemplate);
 
         setJMenuBar(jMenuBar1);
 
@@ -482,28 +551,14 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuBar1MouseReleased
 
     private void jEmploymentSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEmploymentSaveButtonActionPerformed
-            try {
-            String[] employment;
-            employment = new String[5];
-            employment[0] = jEmploymentMainText.getText();
-            employment[1] = jEmploymentTo.getText();
-            employment[2] = jEmploymentPositionText.getText();
-            employment[3] = jEmploymentSalaryText.getText();
-            employment[4] = jEmploymentInfoText.getText();
-            int nbrEmployment = employment.length;
-
-            BufferedWriter writer = null;
-            writer = new BufferedWriter(new FileWriter("src\\automateyourjob\\employment.template"));
-            for(int i = 0; i < nbrEmployment; i++)
-            {
-                writer.write(employment[i]);
-                writer.append('¦');
-            }
-            writer.flush();
-            writer.close();
-
+        try {
+            String employmentURL = "employment.template";
+            
+            WriteTemplate writer = new WriteTemplate(employmentURL, 
+                    jEmploymentMainText, jEmploymentTo, jEmploymentPositionText,
+                    jEmploymentSalaryText, jEmploymentInfoText);
         } catch (IOException ex) {
-            Logger.getLogger(AutomateYourJobUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AutomateYourJob.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jEmploymentSaveButtonActionPerformed
 
@@ -548,25 +603,13 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
 
     private void jEducationSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEducationSaveButtonActionPerformed
         try {
-            String[] education;
-            education = new String[3];
-            education[0] = jEducationMainText.getText();
-            education[1] = jEducationTo.getText();
-            education[2] = jEducationAwarded.getText();
-            int nbrEmployment = education.length;
-
-            BufferedWriter writer = null;
-            writer = new BufferedWriter(new FileWriter("src\\automateyourjob\\education.template"));
-            for(int i = 0; i < nbrEmployment; i++)
-            {
-                writer.write(education[i]);
-                writer.append('¦');
-            }
-            writer.flush();
-            writer.close();
+        String educationURL = "education.template";
+            WriteTemplate writer = new WriteTemplate(educationURL, jEducationMainText,
+                    jEducationTo, jEducationAwarded);
         } catch (IOException ex) {
-            Logger.getLogger(AutomateYourJobUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AutomateYourJob.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_jEducationSaveButtonActionPerformed
 
     private void jEducationLoadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEducationLoadButtonActionPerformed
@@ -585,6 +628,15 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
             jEducationAwarded.setText("and was awarded:" + "\n" + "\n");
     }//GEN-LAST:event_jEducationDefaultButtonActionPerformed
 
+    private void jAwaitingPublishingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAwaitingPublishingActionPerformed
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "awaitingPublishing");
+    }//GEN-LAST:event_jAwaitingPublishingActionPerformed
+
+    private void jEmploymentPublishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEmploymentPublishActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jEmploymentPublishActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -601,43 +653,22 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AutomateYourJobUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AutomateYourJobUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AutomateYourJobUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AutomateYourJobUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AutomateYourJob.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new AutomateYourJobUI().setVisible(true);
-        });
         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel awaitingPublishing;
     private javax.swing.JPanel educationEdit;
     private javax.swing.JPanel employmentEdit;
     private javax.swing.JPanel homePanel;
+    private javax.swing.JMenuItem jAwaitingPublishing;
+    private javax.swing.JMenuItem jCandidateComms;
+    private javax.swing.JMenu jEditTemplate;
     private javax.swing.JTextField jEducationAwarded;
     private javax.swing.JTextField jEducationDate1;
     private javax.swing.JTextField jEducationDate2;
@@ -645,6 +676,7 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
     private javax.swing.JLabel jEducationLabel1;
     private javax.swing.JButton jEducationLoadButton;
     private javax.swing.JTextField jEducationMainText;
+    private javax.swing.JButton jEducationPublish;
     private javax.swing.JTextField jEducationReferee;
     private javax.swing.JButton jEducationSaveButton;
     private javax.swing.JTextField jEducationTitle;
@@ -659,22 +691,25 @@ public class AutomateYourJobUI extends javax.swing.JFrame {
     private javax.swing.JTextField jEmploymentMainText;
     private javax.swing.JTextField jEmploymentPosition;
     private javax.swing.JTextField jEmploymentPositionText;
+    private javax.swing.JButton jEmploymentPublish;
     private javax.swing.JTextField jEmploymentReferee;
     private javax.swing.JTextField jEmploymentSalary;
     private javax.swing.JTextField jEmploymentSalaryText;
     private javax.swing.JButton jEmploymentSaveButton;
     private javax.swing.JScrollPane jEmploymentScrollPane;
+    private javax.swing.JButton jEmploymentShort;
     private javax.swing.JTextField jEmploymentTitle;
     private javax.swing.JTextField jEmploymentTo;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jFile;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jMembership;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuEducationEdit;
     private javax.swing.JMenuItem jMenuEmploymentEdit;
     private javax.swing.JMenuItem jMenuHome;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JButton jProfQualPublish;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JPanel mainPanel;

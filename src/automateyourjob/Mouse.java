@@ -16,18 +16,20 @@
  */
 package automateyourjob;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.InputEvent;
 
 /**
  *
  * @author ntko
  */
-public class AutomateYourJob {
-
-    public static void main(String[] args) throws IOException {
-        Process process = new ProcessBuilder(System.getenv("APPDATA") + "\\AYJ\\AutoHotKey.exe").start();
+public class Mouse {
+    void Click(int x, int y) throws AWTException {
+        Robot r = new Robot();
+        r.setAutoDelay(20);
+        r.mouseMove(x, y);
+        r.mousePress(InputEvent.BUTTON1_MASK);
+        r.mouseRelease(InputEvent.BUTTON1_MASK);
     }
 }

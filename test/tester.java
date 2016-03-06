@@ -14,20 +14,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package automateyourjob;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author ntko
  */
-public class AutomateYourJob {
+public class tester {
 
-    public static void main(String[] args) throws IOException {
-        Process process = new ProcessBuilder(System.getenv("APPDATA") + "\\AYJ\\AutoHotKey.exe").start();
+    public static void main(String[] args) {
+
+    
+    System.out.println(System.getProperty("APPDATA"));
     }
 }

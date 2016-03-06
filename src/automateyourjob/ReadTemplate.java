@@ -18,8 +18,9 @@ package automateyourjob;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+import java.io.File;
 import java.io.IOException;
-import java.net.URL;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -32,10 +33,12 @@ import java.util.Arrays;
 public class ReadTemplate {
 
     public ArrayList<String> ReadTemplate(String fileName) throws IOException {
-
-            URL url = Resources.getResource(fileName);
-            String text = Resources.toString(url, Charsets.UTF_8);
-            ArrayList<String> textArray = new ArrayList<>(Arrays.asList(text.split("¦")));
+            File f = new File(System.getenv("APPDATA") +"/AYJ/" + fileName);
+        
+            URI uri = f.toURI();
+            
+            String text = Resources.toString(uri.toURL(), Charsets.UTF_8);
+            ArrayList<String> textArray = new ArrayList<>(Arrays.asList(text.split("`")));
             return textArray;
         }
 }
